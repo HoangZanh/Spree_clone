@@ -124,6 +124,7 @@ if Spree::Product.count == 0
       p.shipping_category = default_shipping_category
       p.sku = "SKU-#{pd[:name].parameterize.upcase}"
       p.available_on = Time.current
+      p.status = 'active'
       p.stores << store
     end
     
