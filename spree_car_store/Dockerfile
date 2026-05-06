@@ -28,4 +28,4 @@ RUN mkdir -p tmp/pids
 EXPOSE 3000
 
 # 10. Lệnh khởi động: Tự động chạy Migrate database sau đó bật Server
-CMD bash -c "bundle exec rails db:migrate && bundle exec puma -C config/puma.rb"
+CMD bash -c "bundle exec rails db:migrate && bundle exec rails db:seed && bundle exec puma -C config/puma.rb"
