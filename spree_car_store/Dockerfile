@@ -21,8 +21,11 @@ COPY . .
 # 7. Nén tài nguyên (CSS, JS, Hình ảnh)
 RUN bundle exec rails assets:precompile
 
-# 8. Mở cổng mạng
+# 8. Khởi tạo file tmp (Tránh lỗi từ phía host)
+RUN mkdir -p tmp/pids
+
+# 9. Mở cổng mạng
 EXPOSE 3000
 
-# 9. Lệnh khởi động: Tự động chạy Migrate database sau đó bật Server
+# 10. Lệnh khởi động: Tự động chạy Migrate database sau đó bật Server
 CMD bash -c "bundle exec rails db:migrate && bundle exec puma -C config/puma.rb"
